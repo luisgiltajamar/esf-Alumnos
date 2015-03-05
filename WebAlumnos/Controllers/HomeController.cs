@@ -42,5 +42,16 @@ namespace WebAlumnos.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult Buscar()
+        {
+            var bus = Request.Form["busqueda"];
+
+            var db = new CursosEntities();
+
+            var al = db.Alumnos.Where(o => o.apellidos.Contains(bus));
+            return View(al);
+        }
+
     }
 }
