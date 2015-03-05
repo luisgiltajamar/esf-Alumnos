@@ -17,6 +17,9 @@ namespace WebAlumnos.Models
         public string dni { get; set; }
         public string nombre { get; set; }
         public string apellidos { get; set; }
-        public DateTime? fechaNacimiento { get; set; }
+        public Nullable<System.DateTime> fechaNacimiento { get; set; }
+        public int idNacionalidad { get; set; }
+    
+        public virtual Nacionalidades Nacionalidades { get; set; }
     }
 }

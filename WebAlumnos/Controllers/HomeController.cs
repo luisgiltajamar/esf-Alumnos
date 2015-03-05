@@ -15,11 +15,11 @@ namespace WebAlumnos.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            using (var db=new CursosEntities())
-            {
+            var db = new CursosEntities();
+           
                 return View(db.Alumnos.ToList());
 
-            }
+            
         }
 
         public ActionResult Alta()
