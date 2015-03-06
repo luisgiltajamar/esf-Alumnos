@@ -27,5 +27,8 @@ namespace WebAlumnos.Models
     
         public virtual DbSet<Alumnos> Alumnos { get; set; }
         public virtual DbSet<Nacionalidades> Nacionalidades { get; set; }
+        public virtual DbSet<Curso> Curso { get; set; }
+        public virtual DbSet<Profesores> Profesores { get; set; }
+        public virtual DbSet<Profesores_Curso> Profesores_Curso { get; set; }
     }
 }
