@@ -10,13 +10,15 @@ namespace WebAlumnos.Controllers
     public class HomeController : Controller
     {
 
-
+        private CursosEntities db = new CursosEntities();
 
         // GET: Home
         public ActionResult Index()
         {
-            var db = new CursosEntities();
            
+
+         
+
                 return View(db.Alumnos.ToList());
 
             
@@ -24,6 +26,9 @@ namespace WebAlumnos.Controllers
 
         public ActionResult Alta()
         {
+            ViewBag.idNacionalidad = 
+                new SelectList(db.Nacionalidades,"id","nombre");
+            ViewBag.idCursos = new MultiSelectList(db.Curso, "id", "nombre");
             return View(new Alumnos());
         }
 
@@ -32,12 +37,18 @@ namespace WebAlumnos.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var db=new CursosEntities())
+                
+                db.Alumnos.Add(model);
+                foreach (var idCurso in model.idCursos)
                 {
-                    db.Alumnos.Add(model);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var c = db.Curso.Find(idCurso);
+                    model.Curso.Add(c);
                 }
+                db.SaveChanges();
+
+
+                    return RedirectToAction("Index");
+                
             }
             return View(model);
         }
