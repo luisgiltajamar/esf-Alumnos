@@ -179,6 +179,7 @@
     <Content Include="Views\Cursos\Index.cshtml" />
     <Content Include="Views\Cursos\Alta.cshtml" />
     <Content Include="Views\Cursos\Modificar.cshtml" />
+    <Content Include="Views\Home\_Listado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
