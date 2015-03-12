@@ -18,6 +18,11 @@ namespace WebAlumnos.Controllers
             return View(db.Curso);
         }
 
+        public ActionResult ListadoAjax()
+        {
+            return PartialView("_ListadoCursos", db.Curso);
+        }
+
         public ActionResult Alta()
         {
             return View(new Curso());
@@ -78,6 +83,26 @@ namespace WebAlumnos.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult AltaAjax(Curso model)
+        {
+            db.Curso.Add(model);
+
+            try
+            {
+                db.SaveChanges();
+                return Json("OK");
+            }
+            catch (Exception ee)
+            {
+                return Json("Error");
+            }
+
+          
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
